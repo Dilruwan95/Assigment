@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import axios from "axios";
 import Cardcomponent from "./Cardcomponent";
 import Filtercomponet from "./filtercomponent";
+import Container from "react-bootstrap/Container";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
 
 class Homepage extends Component {
   constructor(props) {
@@ -21,7 +24,7 @@ class Homepage extends Component {
           },
         },
       ],
-      itemtype:"",
+      itemtype: "",
     };
   }
 
@@ -43,25 +46,38 @@ class Homepage extends Component {
   }
 
   render() {
-
     // const[res,itemtype] = this.state
     // const filtercloths = res.filter(cloth => (
     //     cloth.res.toLOwercase().include(itemtype.toLOwercase())
     // ))
     return (
       <div>
-          <Filtercomponet placeholder="enter type" handlechange = {(e)=>this.setState({itemtype:e.target.value})} />
-        {this.state.res.map((x) => (
+        {/* <Filtercomponet
+          placeholder="enter type"
+          handlechange={(e) => this.setState({ itemtype: e.target.value })}
+        /> */}
+      
           <div>
-            <Cardcomponent
-              id = {x.id}
-              src={x.details.image}
-              name={x.name}
-              size={x.details.size}
-              price={x.details.price}
-            />
+            <Container> 
+              <Row>
+                <Col>kbkbdbvb</Col>
+              </Row>
+              <Row>
+              {this.state.res.map((x) => (
+                <Col sm={4}>
+                  <Cardcomponent
+                    id={x.id}
+                    src={x.details.image}
+                    name={x.name}
+                    size={x.details.size}
+                    price={x.details.price}
+                    tag = {x.details.tag}
+                  />
+                </Col> ))}
+              </Row>  
+            </Container>
           </div>
-        ))}
+      
       </div>
     );
   }
